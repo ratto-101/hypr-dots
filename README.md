@@ -2,7 +2,7 @@
 
 A Hyprland rice for Arch Linux — Waybar, Rofi, SwayNC, Kitty, with a Gruvbox-inspired aesthetic. Config written in Hyprland's native Lua syntax (requires Hyprland 0.55+).
 
-![desktop screenshot](assets/screenshots/desktop.png)
+![)
 
 ## Features
 

@@ -40,7 +40,7 @@ papirus-icon-theme
 ttf-jetbrains-mono-nerd
 
 # Apps (referenced by keybinds in hyprland.conf)
-thunar
+nautilus
 gnome-text-editor
 gnome-calculator
 

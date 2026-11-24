@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+if [[ "$1" == "--is-running" ]]; then
+    pgrep -x hypridle >/dev/null 2>&1 && echo true || echo false
+    exit 0
+fi
+if pgrep -x hypridle >/dev/null 2>&1; then
+    pkill -x hypridle
+    notify-send "Caffeine" "Idle lock/sleep paused"
+else
+    hypridle >/dev/null 2>&1 &
+    disown
+    notify-send "Caffeine" "Idle lock/sleep active"
+fi

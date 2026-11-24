@@ -1,0 +1,63 @@
+*{
+    bg0:     #1d2021;
+    bg1:     #282828;
+    bg2:     #262a2b;
+    bg3:     #45403d;
+    fg:      #d4be98;
+    yellow:  #d8a657;
+    grey1:   #928374;
+
+    font: "Electroharmonix 12";
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    location: north;
+    anchor: north;
+    y-offset: 44px;
+    width: 680px;
+    background-color: @bg1;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+mainbox {
+    spacing: 8px;
+    children: [ inputbar, listview ];
+}
+
+inputbar {
+    background-color: @bg0;
+    border-radius: 10px;
+    padding: 8px 12px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @yellow;
+    padding: 0 8px 0 0;
+}
+
+entry {
+    placeholder: "Search clipboard...";
+    placeholder-color: @grey1;
+}
+
+listview {
+    lines: 8;
+    fixed-height: false;
+    scrollbar: false;
+    spacing: 4px;
+}
+
+element {
+    padding: 7px 12px;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @yellow;
+    text-color: @bg0;
+}

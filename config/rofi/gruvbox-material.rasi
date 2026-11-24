@@ -1,0 +1,83 @@
+* {
+bg:        #282828;
+bg-alt:    #32302f;
+bg-elev:   #3c3836;
+fg:        #ebdbb2;
+fg-muted:  #a89984;
+aqua:      #8ec07c;
+blue:      #83a598;
+yellow:    #fabd2f;
+red:       #fb4934;
+border:    #504945;
+
+background-color: transparent;
+text-color:       @fg;
+font:             "Iosevka Nerd Font Propo 11";
+}
+
+window {
+location:         north;
+anchor:           north;
+x-offset:         0px;
+y-offset:         38px;
+width:            780px;
+background-color: @bg;
+border:           2px;
+border-color:     @border;
+border-radius:    0px 0px 10px 10px;
+padding:          12px;
+}
+
+mainbox {
+spacing:  10px;
+children: [ inputbar, listview ];
+}
+
+inputbar {
+background-color: @bg-alt;
+border:           1px;
+border-color:     @border;
+border-radius:    6px;
+padding:          8px 12px;
+children:         [ prompt, entry ];
+}
+
+prompt {
+text-color: @aqua;
+padding:    0 8px 0 0;
+}
+
+entry {
+text-color:  @fg;
+placeholder: "Search...";
+}
+
+listview {
+lines:        8;
+columns:      1;
+fixed-height: false;
+spacing:      4px;
+}
+
+element {
+padding:       8px 10px;
+border-radius: 6px;
+}
+
+element normal.normal,
+element alternate.normal {
+background-color: transparent;
+text-color:       @fg;
+}
+
+element selected.normal {
+background-color: @bg-elev;
+text-color:       @yellow;
+border:           1px;
+border-color:     @aqua;
+}
+
+element-text {
+background-color: transparent;
+text-color:       inherit;
+}

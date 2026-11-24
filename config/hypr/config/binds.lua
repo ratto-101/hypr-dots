@@ -12,7 +12,7 @@ end
 ---- WINDOW MANAGEMENT ----
 ---------------------------
 
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("/home/ratto/.config/waybar/scripts/launch.sh"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.config/waybar/scripts/launch.sh"))
 
 
 -- Window manipulation
@@ -128,7 +128,7 @@ hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd("grim - | wl-copy"))
 -- hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(noctCall .. "panel-toggle wallpaper"))
 
 -- Clipboard
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("/home/ratto/.local/bin/rofi-clipboard"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/rofi-clipboard"))
 
 -- Notifications
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("swaync-client -t -sw"))
@@ -182,17 +182,17 @@ hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 
 -- Wallpaper Selector
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("/home/ratto/.local/bin/waybar-wallpaper"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/waybar-wallpaper"))
 
 
 -- change power profile and laptop mode idk man im the only one using a pc in my friends group chat so i dont know if this is useful to anyone else but i like it
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("/home/ratto/.local/bin/powerprofile"))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd("/home/ratto/.local/bin/laptop-mode"))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/powerprofile"))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/laptop-mode"))
 
 
 -- open some menus  thru a shortcut (its for keyboard phsycos) 
-hl.bind(mainMod .. " + SHIFT + m", hl.dsp.exec_cmd("/home/ratto/.local/bin/rice-menu"))
+hl.bind(mainMod .. " + SHIFT + m", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/rice-menu"))
 
 
 -- opens a cheatsheet of all the keybinds in a menu (its for keyboard phsycos too)
-hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd("/home/ratto/.local/bin/keybinds-menu"))
+hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd(os.getenv("HOME") .. "/.local/bin/keybinds-menu"))

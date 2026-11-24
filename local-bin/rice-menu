@@ -5,7 +5,7 @@ Toggle Laptop Mode
 Toggle Caffeine (Idle)
 Toggle Microphone"
 
-choice=$(printf "%s\n" "$options" | rofi -dmenu -i -p "Rice Tools" -theme "/home/ratto/.config/rofi/gruvbox-material.rasi")
+choice=$(printf "%s\n" "$options" | rofi -dmenu -i -p "Rice Tools" -theme "$HOME/.config/rofi/gruvbox-material.rasi")
 case "$choice" in
 "Wi-Fi Menu") ~/.local/bin/wifi-menu ;;
 "Toggle Power Profile") ~/.local/bin/powerprofile ;;

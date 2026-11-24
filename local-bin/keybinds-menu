@@ -137,7 +137,7 @@ done
 list=$(extract_binds | sort -u)
 [ -z "$list" ] && list="No keybinds found in ~/.config/hypr"
 
-chosen=$(printf "%s\n" "$list" | rofi -dmenu -i -p "Shortcuts" -theme "/home/ratto/.config/rofi/gruvbox-material.rasi")
+chosen=$(printf "%s\n" "$list" | rofi -dmenu -i -p "Shortcuts" -theme "$HOME/.config/rofi/gruvbox-material.rasi")
 [ -z "$chosen" ] && exit 0
 
 if command -v wl-copy >/dev/null 2>&1; then

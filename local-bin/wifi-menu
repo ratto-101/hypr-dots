@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 nmcli device wifi rescan 2>/dev/null
-chosen=$(nmcli -f SSID,SECURITY,BARS device wifi list | sed "1d" | awk "{\$1=\$1;print}" | rofi -dmenu -i -p "Wi-Fi" -theme "/home/ratto/.config/rofi/gruvbox-material.rasi")
+chosen=$(nmcli -f SSID,SECURITY,BARS device wifi list | sed "1d" | awk "{\$1=\$1;print}" | rofi -dmenu -i -p "Wi-Fi" -theme "$HOME/.config/rofi/gruvbox-material.rasi")
 [ -z "$chosen" ] && exit 0
 ssid=$(echo "$chosen" | awk "{print \$1}")
 if nmcli -t -f NAME connection show | grep -qx "$ssid"; then

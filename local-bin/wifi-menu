@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+nmcli device wifi rescan 2>/dev/null
+chosen=$(nmcli -f SSID,SECURITY,BARS device wifi list | sed "1d" | awk "{\$1=\$1;print}" | rofi -dmenu -i -p "Wi-Fi" -theme "/home/ratto/.config/rofi/gruvbox-material.rasi")
+[ -z "$chosen" ] && exit 0
+ssid=$(echo "$chosen" | awk "{print \$1}")
+if nmcli -t -f NAME connection show | grep -qx "$ssid"; then
+nmcli connection up id "$ssid" && notify-send "Wi-Fi" "Connected to $ssid"
+else
+pass=$(rofi -dmenu -password -p "Password for $ssid")
+[ -n "$pass" ] && nmcli device wifi connect "$ssid" password "$pass" && notify-send "Wi-Fi" "Connected to $ssid"
+fi

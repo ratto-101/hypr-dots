@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+hypr_dir="$HOME/.config/hypr"
+
+format_keys() {
+printf "%s" "$1" | sed -E \
+    -e "s/\.\./+/g" \
+    -e "s/\"//g" \
+    -e "s/\bmainMod\b/SUPER/gI" \
+    -e "s/\+[[:space:]]*\+/+/g" \
+    -e "s/[[:space:]]*\+[[:space:]]*/ + /g" \
+    -e "s/^[[:space:]]+//;s/[[:space:]]+$//"
+}
+
+describe_action() {
+local raw="$1"
+local comment="$2"
+
+if [ -n "$comment" ]; then
+    printf "%s" "$comment"
+    return
+fi
+
+case "$raw" in
+    *workspace*"m+1"*|*workspace*"m-1"*) printf "Switch workspace / monitor" ;;
+    *workspace*"emptym"*) printf "Go to next empty workspace" ;;
+    *move*"special"*) printf "Move window to scratchpad" ;;
+    *toggle_special*) printf "Toggle scratchpad" ;;
+    *hyprshot*"region"*) printf "Screenshot selected region" ;;
+    *hyprshot*"window"*) printf "Screenshot active window" ;;
+    *hyprshot*"output"*) printf "Screenshot full screen" ;;
+    *hyprlock*) printf "Lock screen" ;;
+    *waybar-wallpaper*) printf "Open wallpaper selector" ;;
+    *powerprofile*) printf "Toggle Performance / Power Saver mode" ;;
+    *laptop-mode*) printf "Toggle Laptop battery/idle mode" ;;
+    *caffeine*) printf "Toggle idle lock/sleep inhibitor" ;;
+    *mictoggle*) printf "Toggle microphone mute" ;;
+    *wifi-menu*) printf "Open Wi-Fi menu" ;;
+    *keybinds-menu*) printf "Open keybinds cheat sheet" ;;
+    *rice-menu*) printf "Open rice quick-actions menu" ;;
+    *)
+        local cleaned
+        cleaned=$(printf "%s" "$raw" | sed -E "s/hl\.dsp\.exec_cmd\(//;s/\)$//;s/\"//g;s/^[[:space:]]*//;s/[[:space:]]*$//")
+        printf "Run %s" "$cleaned"
+        ;;
+esac
+}
+
+extract_binds() {
+if [ ! -d "$hypr_dir" ]; then
+    printf "No ~/.config/hypr directory found\n"
+    return
+fi
+
+grep -rnE "^\s*hl\.bind\(" "$hypr_dir" --include="*.lua" 2>/dev/null | while IFS= read -r match; do
+    file="${match%%:*}"
+    rest="${match#*:}"
+    lineno="${rest%%:*}"
+    line="${rest#*:}"
+
+    prev_comment=""
+    if [ "$lineno" -gt 1 ]; then
+        prev_line=$(sed -n "$((lineno - 1))p" "$file" 2>/dev/null)
+        case "$prev_line" in
+            *--*)
+                prev_comment="${prev_line#*--}"
+                prev_comment=$(printf "%s" "$prev_comment" | sed -e "s/^[[:space:]]*//;s/[[:space:]]*$//")
+                ;;
+        esac
+    fi
+
+    inline_comment=""
+    case "$line" in
+        *--*)
+            inline_comment="${line#*--}"
+            inline_comment=$(printf "%s" "$inline_comment" | sed -e "s/^[[:space:]]*//;s/[[:space:]]*$//")
+            ;;
+    esac
+
+    comment="${inline_comment:-$prev_comment}"
+
+    code_part="${line%%--*}"
+    inner="${code_part#*hl.bind(}"
+    inner="${inner%)*}"
+    keys="${inner%%,*}"
+    action="${inner#*,}"
+
+    keys=$(format_keys "$keys")
+    action=$(printf "%s" "$action" | sed -e "s/^[[:space:]]*//;s/[[:space:]]*$//")
+    desc=$(describe_action "$action" "$comment")
+
+    [ -n "$keys" ] && printf "%-34s  →  %s\n" "$keys" "$desc"
+done
+
+grep -rnE "^\s*bind[a-z]*\s*=" "$hypr_dir" --include="*.conf" 2>/dev/null | while IFS= read -r match; do
+    file="${match%%:*}"
+    rest="${match#*:}"
+    lineno="${rest%%:*}"
+    line="${rest#*:}"
+
+    prev_comment=""
+    if [ "$lineno" -gt 1 ]; then
+        prev_line=$(sed -n "$((lineno - 1))p" "$file" 2>/dev/null)
+        case "$prev_line" in
+            *#*)
+                prev_comment="${prev_line#*#}"
+                prev_comment=$(printf "%s" "$prev_comment" | sed -e "s/^[[:space:]]*//;s/[[:space:]]*$//")
+                ;;
+        esac
+    fi
+
+    inline_comment=""
+    case "$line" in
+        *#*)
+            inline_comment="${line#*#}"
+            inline_comment=$(printf "%s" "$inline_comment" | sed -e "s/^[[:space:]]*//;s/[[:space:]]*$//")
+            ;;
+    esac
+
+    comment="${inline_comment:-$prev_comment}"
+    body="${line%%#*}"
+    body="${body#*=}"
+    IFS="," read -r mod key disp arg <<< "$body"
+    mod=$(printf "%s" "$mod" | xargs)
+    key=$(printf "%s" "$key" | xargs)
+    disp=$(printf "%s" "$disp" | xargs)
+    arg=$(printf "%s" "$arg" | xargs)
+
+    combo=$(format_keys "$mod + $key")
+    [ -z "$mod" ] && combo=$(format_keys "$key")
+    raw_cmd="$disp $arg"
+    desc=$(describe_action "$raw_cmd" "$comment")
+
+    [ -n "$key" ] && printf "%-34s  →  %s\n" "$combo" "$desc"
+done
+}
+
+list=$(extract_binds | sort -u)
+[ -z "$list" ] && list="No keybinds found in ~/.config/hypr"
+
+chosen=$(printf "%s\n" "$list" | rofi -dmenu -i -p "Shortcuts" -theme "/home/ratto/.config/rofi/gruvbox-material.rasi")
+[ -z "$chosen" ] && exit 0
+
+if command -v wl-copy >/dev/null 2>&1; then
+printf "%s" "$chosen" | wl-copy
+notify-send "Keybinds" "Copied shortcut & description"
+fi

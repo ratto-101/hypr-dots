@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+options="Wi-Fi Menu
+Toggle Power Profile
+Toggle Laptop Mode
+Toggle Caffeine (Idle)
+Toggle Microphone"
+
+choice=$(printf "%s\n" "$options" | rofi -dmenu -i -p "Rice Tools" -theme "/home/ratto/.config/rofi/gruvbox-material.rasi")
+case "$choice" in
+"Wi-Fi Menu") ~/.local/bin/wifi-menu ;;
+"Toggle Power Profile") ~/.local/bin/powerprofile ;;
+"Toggle Laptop Mode") ~/.local/bin/laptop-mode ;;
+"Toggle Caffeine (Idle)") ~/.local/bin/caffeine ;;
+"Toggle Microphone") ~/.local/bin/mictoggle ;;
+esac

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "kitty-direct",
+    "source": "/home/ratto/Pictures/Wallpapers/wallhaven-we3gp6.png",
+    "width": 50,
+    "padding": {
+      "top": 1,
+      "left": 2,
+      "right": 3
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "host",
+    "uptime",
+    "shell",
+
+    "de",
+    "wm",
+
+    "cpu",
+    "cpuusage",
+    "gpu",
+    "memory",
+    "swap",
+    "disk",
+    "break",
+    "colors"
+  ]
+}

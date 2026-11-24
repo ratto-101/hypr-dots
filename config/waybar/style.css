@@ -1,0 +1,172 @@
+@import "colors/gruvbox-material.css";
+
+*{
+    all:unset;
+    font-family: "Electroharmonix","Iosevka Nerd Font Propo", monospace;
+
+}
+
+/* waybar theme 
+here you change it if you hate mine (how dare you hate it:<) */
+window#waybar {
+    background-color: transparent;
+    color: @fg;
+    border-radius:10px;
+
+
+}
+
+window#waybar > box {
+    background-color: @bg0;
+    border-radius: 10px;
+    margin: 6px 10px 0px 10px;
+}
+
+/* the workspace module in the center if you dont lie its place go to the json file thats just for looks */
+#workspaces{
+    min-width: 100px;
+    font-size: 0.2rem;
+    padding: 2px 4px;
+    margin: 11px 0;
+    border-radius: 99px;
+}
+
+#workspaces button{
+    background-color: @bg4;
+    color: transparent; 
+    padding: 0px 5px;
+    margin: 0px 2px;
+    min-width: 4px;
+}
+
+#workspaces button.active{
+    background-color: @blue;
+    min-width: 1.2rem;
+    font-weight: 800;
+    transition: 150ms ease-in-out;
+
+}
+
+.modules-left{
+    margin-left: 12px;
+}
+
+
+.modules-right{
+    margin-right: 12px;
+}
+
+/* the cool music visualizer*/
+#cava {
+    margin: 0 12px;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+}
+
+/* audio clock and battery icons */
+#pulseaudio,
+#clock,
+#battery {
+    padding: 0 8px;
+    font-size: 0.9rem;
+}
+
+#battery {
+    margin-left: 6px;
+}
+
+/* tray icons they are so cool */
+#tray {
+    background-color: @bg1;
+    padding: 2px 10px;
+    margin: 5px 6px;
+    border-radius: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+    border-radius: 6px;
+}
+
+menu {
+    background-color: @bg0;
+    color: @fg;
+    border: 1px solid @bg4;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+menuitem {
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+menuitem:hover {
+    background-color: @bg2;
+}
+
+/* tray shit  */
+#custom-tray-arrow {
+    color: @fg;
+    padding: 0 6px;
+    margin: 0 4px;
+    font-size: 0.9rem;
+}
+
+#custom-tray-arrow:hover {
+    color: @blue;
+}
+
+#tray {
+    background-color: @bg1;
+    padding: 2px 10px;
+    margin: 5px 6px;
+    border-radius: 8px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+    border-radius: 6px;
+}
+
+menu {
+    background-color: @bg0;
+    color: @fg;
+    border: 1px solid @bg4;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+menuitem {
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+menuitem:hover {
+    background-color: @bg2;
+}
+
+/* network icon you need it  */
+
+#network {
+    color: @fg;
+    padding: 0 8px;
+    margin: 0 4px;
+    font-size: 0.95rem;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+/* theres no bluetooth icon for a reason */

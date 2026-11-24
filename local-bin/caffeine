@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+if pgrep -f "hypridle" >/dev/null 2>&1; then
+pkill -f "hypridle"
+notify-send "Caffeine" "Idle lock/sleep paused"
+else
+hypridle >/dev/null 2>&1 &
+disown
+notify-send "Caffeine" "Idle lock/sleep active"
+fi

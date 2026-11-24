@@ -1,0 +1,36 @@
+# Core Hyprland & Desktop Components
+hyprland
+hyprlock
+xdg-desktop-portal-hyprland
+waybar
+rofi-wayland
+swaync
+wlogout
+swww
+waypaper
+
+# Terminal, Shell & CLI Tools
+kitty
+fish
+starship
+fastfetch
+btop
+cava
+wl-clipboard
+cliphist
+grim
+slurp
+brightnessctl
+playerctl
+networkmanager
+power-profiles-daemon
+
+# Theming & Fonts
+nwg-look
+qt5ct
+qt6ct
+papirus-icon-theme
+ttf-jetbrains-mono-nerd
+
+# Pre-installed Apps (Official Repos)
+code

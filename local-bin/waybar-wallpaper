@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+pkill -x rofi && exit 0
+
+WALL_DIR="$HOME/Pictures/Wallpapers"
+THEME="$HOME/.config/rofi/wallpaper-grid.rasi"
+
+choice=$(find "$WALL_DIR" -maxdepth 2 -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.webp" -o -iname "*.gif" \) | sort | while read -r img; do
+name=$(basename "$img")
+printf "%s\0icon\x1f%s\n" "$name" "$img"
+done | rofi -dmenu -i -show-icons -p "Wallpaper" -theme "$THEME")
+
+[ -z "$choice" ] && exit 0
+target=$(find "$WALL_DIR" -maxdepth 2 -type f -name "$choice" | head -n 1)
+[ -n "$target" ] && awww img "$target" --transition-type wipe --transition-angle 30 --transition-duration 0.7 --transition-fps 100

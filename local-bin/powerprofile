@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+state_file="$HOME/.cache/rice_perf_mode"
+mkdir -p "$HOME/.cache"
+
+if command -v powerprofilesctl >/dev/null 2>&1; then
+cur=$(powerprofilesctl get 2>/dev/null)
+if [ "$cur" = "performance" ]; then
+    powerprofilesctl set power-saver 2>/dev/null || powerprofilesctl set balanced 2>/dev/null
+    rm -f "$state_file"
+    notify-send "Power Profile" "Laptop / Power Saver mode enabled"
+else
+    powerprofilesctl set performance 2>/dev/null
+    touch "$state_file"
+    notify-send "Power Profile" "Performance mode enabled (max boost/power)"
+fi
+else
+if [ -f "$state_file" ]; then
+    rm -f "$state_file"
+    notify-send "Power Profile" "Normal mode (install power-profiles-daemon for hardware profiles)"
+else
+    touch "$state_file"
+    notify-send "Power Profile" "Performance flag active (install power-profiles-daemon for hardware profiles)"
+fi
+fi

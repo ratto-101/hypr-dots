@@ -1,0 +1,55 @@
+
+* {
+background-image: none;
+box-shadow: none;
+font-family: "Electroharmonix";
+font-weight: 700;
+}
+
+window {
+background-color: rgba(53, 53, 53, 0.452);
+}
+
+button {
+color: #7e7c7a;
+background-color: #000000;
+border: none;
+border-radius: 20px;
+margin: 12px;
+background-repeat: no-repeat;
+background-position: center;
+background-size: 25%;
+transition: 150ms ease-in-out;
+}
+
+button:focus,
+button:active,
+button:hover {
+background-color: #585755;
+color: #282828;
+outline-style: none;
+}
+
+#lock {
+background-image: image(url("/home/ratto/.config/wlogout/icons/lock.png"), url("/usr/share/wlogout/icons/lock.png"));
+}
+
+#logout {
+background-image: image(url("/home/ratto/.config/wlogout/icons/logout.png"), url("/usr/share/wlogout/icons/logout.png"));
+}
+
+#suspend {
+background-image: image(url("/home/ratto/.config/wlogout/icons/suspend.png"), url("/usr/share/wlogout/icons/suspend.png"));
+}
+
+#hibernate {
+background-image: image(url("/home/ratto/.config/wlogout/icons/hibernate.png"), url("/usr/share/wlogout/icons/hibernate.png"));
+}
+
+#shutdown {
+background-image: image(url("/home/ratto/.config/wlogout/icons/shutdown.png"), url("/usr/share/wlogout/icons/shutdown.png"));
+}
+
+#reboot {
+background-image: image(url("/home/ratto/.config/wlogout/icons/reboot.png"), url("/usr/share/wlogout/icons/reboot.png"));
+}

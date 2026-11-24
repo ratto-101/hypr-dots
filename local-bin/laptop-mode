@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+flag="$HOME/.cache/rice_laptop_mode"
+mkdir -p "$HOME/.cache"
+
+if [ -f "$flag" ]; then
+rm -f "$flag"
+if pgrep -x "hypridle" >/dev/null 2>&1; then
+    pkill -x "hypridle"
+fi
+notify-send "Laptop Mode" "OFF — Normal / desktop-style behavior restored"
+else
+touch "$flag"
+command -v powerprofilesctl >/dev/null 2>&1 && powerprofilesctl set power-saver 2>/dev/null
+if ! pgrep -x "hypridle" >/dev/null 2>&1 && command -v hypridle >/dev/null 2>&1; then
+    hypridle >/dev/null 2>&1 &
+    disown
+fi
+notify-send "Laptop Mode" "ON — Battery & idle optimization active (toggle again anytime)"
+fi

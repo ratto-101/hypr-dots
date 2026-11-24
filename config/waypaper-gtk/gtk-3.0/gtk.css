@@ -1,0 +1,58 @@
+@define-color bar_bg rgba(29, 32, 33, 0.96);
+@define-color surface_bg #242728;
+@define-color pill_bg #2f3335;
+@define-color pill_hover #3a3f42;
+@define-color fg_warm #d4be98;
+@define-color accent_teal #89b482;
+@define-color accent_gold #d8a657;
+
+* {
+    font-family: "Electroharmonix", monospace;
+}
+
+window, window.background, dialog, popover, popover contents {
+    background-color: @surface_bg;
+    color: @fg_warm;
+    font-family: "Electroharmonix", monospace;
+}
+
+headerbar, .titlebar {
+    background-color: @bar_bg;
+    color: @fg_warm;
+    border: none;
+    box-shadow: none;
+}
+
+button, combobox button, entry {
+    background-color: @pill_bg;
+    background-image: none;
+    color: @fg_warm;
+    border: none;
+    border-radius: 12px;
+    padding: 5px 12px;
+    box-shadow: none;
+}
+
+button:hover, combobox button:hover, entry:focus {
+    background-color: @pill_hover;
+    color: @accent_gold;
+}
+
+button:checked, button:active, flowboxchild:selected {
+    background-color: @accent_teal;
+    color: #1d2021;
+    border-radius: 12px;
+}
+
+flowboxchild {
+    border-radius: 14px;
+    padding: 4px;
+}
+
+flowboxchild:hover {
+    background-color: @pill_bg;
+}
+
+scrolledwindow, viewport, flowbox {
+    background-color: @surface_bg;
+}

@@ -1,12 +1,15 @@
 # Core Hyprland & Desktop Components
 hyprland
 hyprlock
+hypridle
 xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
 waybar
 rofi
 swaync
 wlogout
 waypaper
+hyprpicker
 
 # Terminal, Shell & CLI Tools
 kitty
@@ -21,8 +24,13 @@ grim
 slurp
 brightnessctl
 playerctl
+pavucontrol
+pipewire
+wireplumber
 networkmanager
 power-profiles-daemon
+libnotify
+xdg-utils
 
 # Theming & Fonts
 nwg-look
@@ -30,6 +38,14 @@ qt5ct
 qt6ct
 papirus-icon-theme
 ttf-jetbrains-mono-nerd
+
+# Apps (referenced by keybinds in hyprland.lua)
+nautilus
+gnome-text-editor
+gnome-calculator
+
+# X11 compat (for xhost in autostart, if needed)
+xorg-xhost
 
 # Pre-installed Apps (Official Repos)
 code

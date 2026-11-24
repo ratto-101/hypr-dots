@@ -18,7 +18,7 @@ A Hyprland rice for Arch Linux — Waybar, Rofi, SwayNC, Kitty, with a Gruvbox-i
 - Bibata cursor theme
 
 ## Requirements
-
+ **180cm+ tall** you have to be atleast 180cm tall NO DWARFS ALLOWED
 - **Arch Linux** (or Arch-based: EndeavourOS, CachyOS, Garuda)
 - **Hyprland 0.55+** (for native Lua config support)
 - An **AUR helper** — `paru` or `yay` (installer installs `yay` if neither is found)

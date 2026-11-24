@@ -8,17 +8,13 @@
     "modules-center": [
         "hyprland/workspaces"
     ],
- 
     "modules-right": [
         "group/tray-drawer",
         "network",
         "clock",
-        
-        "battery"
-
+        "battery",
+        "custom/wallpaper"
     ],
-    
-
 
 // wallpaper shit
 "custom/wallpaper": {
@@ -30,9 +26,8 @@
 
     // theres no bluetooth icon for a reason
 
-    // netowrk icon
+    // network icon — auto-detects wifi/ethernet (removed hardcoded wlan* interface)
 "network": {
-    "interface": "wlan*",
     "format-wifi": "{icon}",
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤮",
@@ -56,7 +51,7 @@
     },
 
     "custom/tray-arrow": {
-        "format": "",
+        "format": "",
         "tooltip": "Toggle tray icons"
     },
 
@@ -69,7 +64,7 @@
 // battery icon duh
 "battery": {
         "format": "{capacity}% {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""]
     },
 
 
@@ -81,19 +76,19 @@
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-muted": "",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
         "format-icons": {
-            "headphone": "",
+            "headphone": "",
             "hands-free": "󰂑",
             "headset": "󰂑",
-            "phone": "",
-            "phone-muted": "",
-            "portable": "",
-            "car": "",
+            "phone": "",
+            "phone-muted": "",
+            "portable": "",
+            "car": "",
             "default": [
-                "",
-                ""
+                "",
+                ""
             ]
         },
         "scroll-step": 1,
@@ -136,6 +131,3 @@
                 }
             }
         }
-
-
- 

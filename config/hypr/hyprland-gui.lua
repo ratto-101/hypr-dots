@@ -12,7 +12,7 @@ hl.config({
         gaps_out = 13,
     },
     input = {
-        kb_layout = "us,ara",
+        kb_layout = "us",
         repeat_delay = 250,
         repeat_rate = 60,
     },
@@ -21,15 +21,9 @@ hl.config({
     },
 })
 
--- Monitors
-hl.monitor({
-    output = "HDMI-A-1",
-    disabled = false,
-    mode = "1920x1080@100.00Hz",
-    position = "0x0",
-    scale = 1,
-    cm = "srgb",
-})
+-- Monitors: auto-detect (removed hardcoded HDMI-A-1 so this works on any display)
+-- If you need a specific monitor config, add it here, e.g.:
+-- hl.monitor({ output = "eDP-1", mode = "1920x1080@60Hz", position = "0x0", scale = 1 })
 
 -- Keybinds
 hl.unbind("SUPER + R")
@@ -43,6 +37,6 @@ hl.bind("SUPER + W", hl.dsp.exec_cmd("brave-origin"))
 hl.unbind("CTRL + ALT + Delete")
 hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd("wlogout"))
 hl.unbind("SUPER + E")
-hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus &"))
+hl.bind("SUPER + E", hl.dsp.exec_cmd("thunar"))
 hl.unbind("SUPER + A")
-hl.bind("SUPER + A", hl.dsp.exec_cmd("./.config/rofi/type-4/launcher.sh"))
+hl.bind("SUPER + A", hl.dsp.exec_cmd("rofi -show drun"))

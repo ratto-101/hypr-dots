@@ -23,8 +23,7 @@ git clone "${REPO_URL}" "${DOTFILES_DIR}"
 fi
 
 echo "==> Normalizing user home paths in ${DOTFILES_DIR}..."
-find "${DOTFILES_DIR}" -path '*/.git' -prune -o -type f -exec grep -Il "/home/ratto" {} + \
-  | xargs -r sed -i "s|/home/ratto|${HOME}|g"
+find "${DOTFILES_DIR}" -path '*/.git' -prune -o -type f -print0 | xargs -0 grep -IlE "/home/(ratto|test)" 2>/dev/null | xargs -r sed -i -E "s|/home/(ratto|test)|${HOME}|g" || true
 
 if [[ -f "${DOTFILES_DIR}/packages.txt" ]]; then
 mapfile -t PACMAN_PKGS < <(grep -vE '^\s*(#|$)' "${DOTFILES_DIR}/packages.txt" || true)

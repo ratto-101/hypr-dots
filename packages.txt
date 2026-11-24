@@ -3,10 +3,9 @@ hyprland
 hyprlock
 xdg-desktop-portal-hyprland
 waybar
-rofi-wayland
+rofi
 swaync
 wlogout
-swww
 waypaper
 
 # Terminal, Shell & CLI Tools

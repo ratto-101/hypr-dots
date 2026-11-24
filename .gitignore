@@ -1,3 +1,20 @@
+# Editor / OS cruft
 *.bak
+*.bak-*
 *.swp
+*.swo
+*~
 .DS_Store
+.netrwhist
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+node_modules/
+
+# Vendored themes — should NOT be committed (install via AUR instead)
+icons/Bibata-Modern-Ice/
+themes/Waypaper-Gruvbox/
+
+# Local backup dirs created by install.sh
+.config-backup-*

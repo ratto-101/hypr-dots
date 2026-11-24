@@ -8,6 +8,3 @@ hyprshot
 
 # Cursor theme (replaces the vendored icons/ dir)
 bibata-cursor-theme
-
-# Spotify theming (optional — only if you use Spotify)
-spicetify-cli

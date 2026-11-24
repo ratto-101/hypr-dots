@@ -14,25 +14,15 @@
         "network",
         "clock",
         
-        "battery"
-
+        "battery",
     ],
     
-
-
-// wallpaper shit
-"custom/wallpaper": {
-    "format": "󰸉",
-    "tooltip-format": "Choose wallpaper (Waypaper)",
-    "on-click": "pkill -x waypaper || waypaper"
-},
 
 
     // theres no bluetooth icon for a reason
 
     // netowrk icon
 "network": {
-    "interface": "wlan*",
     "format-wifi": "{icon}",
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤮",

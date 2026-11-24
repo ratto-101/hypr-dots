@@ -21,15 +21,10 @@ hl.config({
     },
 })
 
--- Monitors
-hl.monitor({
-    output = "HDMI-A-1",
-    disabled = false,
-    mode = "1920x1080@100.00Hz",
-    position = "0x0",
-    scale = 1,
-    cm = "srgb",
-})
+-- Monitors: auto-detect (works on any display)
+-- If you need a specific monitor, uncomment and edit:
+-- hl.monitor({ output = "eDP-1", mode = "1920x1080@60Hz", position = "0x0", scale = 1 })
+
 
 -- Keybinds
 hl.unbind("SUPER + R")
@@ -45,4 +40,6 @@ hl.bind("CTRL + ALT + Delete", hl.dsp.exec_cmd("wlogout"))
 hl.unbind("SUPER + E")
 hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus &"))
 hl.unbind("SUPER + A")
-hl.bind("SUPER + A", hl.dsp.exec_cmd("./.config/rofi/type-4/launcher.sh"))
+hl.bind("SUPER + A", hl.dsp.exec_cmd("rofi -show drun"))
+
+-- hl.bind("SUPER + A", hl.dsp.exec_cmd("./.config/rofi/type-4/launcher.sh"))
